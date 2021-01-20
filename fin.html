@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<canvas id="myChart" width="400" height="400"></canvas>
+		</div>
+		<script>
+			var studying = JSON.parse(localStorage.getItem('studying'));
+
+			// =========== 결과를 result1에 저장(미완입니다.)
+			// 목표: 연속된 studying 값들이 존재할때 공부를 시작한 시각과 끝난 시각의 양 끝을 저장하기 위함
+			var result1 = new Array();
+			var sum = 0;
+			var i;
+
+			// 5번째부터(5번째부터 한 이유는 연속된 동작이 모두 공부중이거나 공부중이지 않을때만 저장하기 위함) 마지막까지 반복
+			for (i = 5; i < studying.length; i++) {
+				document.write(studying[i], '<br>'); // 그냥 한번 눈으로 보기 위해서 나타낸 코드
+
+				// if문을 통해 연속된 5개의 항목중 양 끝 값이 0.5를 넘는다면 공부중인 것으로 간주
+				if (studying[i][0] && studying[i - 4][0] > 0.5 && studying[i - 5][0] <= 0.5) {
+					result1.push([studying[i], 1]); // 공부중인 경우는 [그 때의 studying 값,  1]로 저장
+				} else if (
+					studying[i][0] &&
+					studying[i - 4][0] <= 0.5 &&
+					studying[i - 5][0] > 0.5
+				) {
+					result1.push([studying[i], 0]); // 공부중이지 않은 경우는 [그 때의 studying 값, 0]으로 저장
+				}
+			}
+
+			// ============ 임의적으로 그린 그래프 입니다.
+			// data
+			var data = [20, 30];
+
+			// plot
+			let ctx = document.getElementById('myChart').getContext('2d');
+			let myChart = new Chart(ctx, {
+				type: 'doughnut',
+				data: {
+					labels: ['공부함', '공부안함'],
+					datasets: [
+						{
+							label: '공부시간',
+							data: data,
+						},
+					],
+				},
+			});
+		</script>
+	</body>
+</html>
