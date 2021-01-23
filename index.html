@@ -1,10 +1,14 @@
-<!DOCTYPE html>
++<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="stylesheet" href="style.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 		<link rel="stylesheet" href="style.css" />
 		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+			@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@600&display=swap');
+			@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+
 			.container {
 				max-width: 960px;
 				margin: 30px auto;
@@ -12,15 +16,19 @@
 			}
 			h1 {
 				font-size: 20px;
+				font-family: 'Maven Pro', sans-serif;
 				text-align: center;
 				margin: 20px 0 20px;
 			}
 			h5 {
-				font-size: 5px;
+				font-family: 'Noto Serif KR', serif;
+				font-size: 4rem;
 				text-align: center;
 				margin: 10px 0;
+				line-height: 2.0 !important;
 			}
 			footer {
+				font-family: 'Noto Serif KR', serif;
 				position: absolute;
 				bottom: 0;
 				width: 100%;
@@ -28,6 +36,18 @@
 				padding: 3px;
 				background-color: white;
 				color: lightgrey;
+			}
+
+			.button {
+				background-color: white;
+				border: none;
+				color: black;
+				padding: 20px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 4px 1px;
 			}
 		</style>
 		<link
@@ -41,14 +61,22 @@
 			type="text/css"
 			href="https://fonts.googleapis.com/earlyaccess/notosanskr.css"
 		/>
+		<img src="study_logo.jpg" alt="study_logo" width="128" height="128" style="vertical-align:middle;margin:100px 870px">
 	</head>
 	<body>
 		<div class="container">
 			<h1>
-				<div>Study position_</div>
-				<button class="btn btn-primary" type="button" onclick="init()">Start</button>
+				<div>
+					
+					<a style="color: blue;">S</a><a style="color: red;">t</a
+					><a style="color: orange;">u</a><a style="color: blue;">d</a
+					><a style="color: green;">y</a>
+					<a>position_</a>
+				</div>
+				<p></p>
+				<button class="button" type="button" onclick="init()">Start</button>
 				<button
-					class="btn btn-primary"
+					class="button"
 					type="button"
 					onclick="location.href='fin.html', fin()"
 				>
@@ -69,8 +97,7 @@
 			</h5>
 		</div>
 		<footer>
-			<p><a href="hege@example.com">hege@example.com</a></p>
-			<p>DSC Yonsei | study position | 도정민 | 강부희 | 박영현 | 안서정</p>
+			<p>Positioner | study position | 강부희 | 박영현 | 안서정</p>
 		</footer>
 		<div class="container">
 			<canvas id="myChart" width="400" height="400"></canvas>
