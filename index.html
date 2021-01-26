@@ -1,4 +1,4 @@
-+<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="stylesheet" href="style.css" />
@@ -25,7 +25,7 @@
 				font-size: 4rem;
 				text-align: center;
 				margin: 10px 0;
-				line-height: 2.0 !important;
+				line-height: 2 !important;
 			}
 			footer {
 				font-family: 'Noto Serif KR', serif;
@@ -61,13 +61,18 @@
 			type="text/css"
 			href="https://fonts.googleapis.com/earlyaccess/notosanskr.css"
 		/>
-		<img src="study_logo.jpg" alt="study_logo" width="128" height="128" style="vertical-align:middle;margin:100px 870px">
+		<img
+			src="study_logo.jpg"
+			alt="study_logo"
+			width="128"
+			height="128"
+			style="vertical-align: middle; margin: 100px 870px;"
+		/>
 	</head>
 	<body>
 		<div class="container">
 			<h1>
 				<div>
-					
 					<a style="color: blue;">S</a><a style="color: red;">t</a
 					><a style="color: orange;">u</a><a style="color: blue;">d</a
 					><a style="color: green;">y</a>
@@ -75,11 +80,7 @@
 				</div>
 				<p></p>
 				<button class="button" type="button" onclick="init()">Start</button>
-				<button
-					class="button"
-					type="button"
-					onclick="location.href='fin.html', fin()"
-				>
+				<button class="button" type="button" onclick="location.href='fin.html', fin()">
 					Finish
 				</button>
 				<div><canvas id="canvas"></canvas></div>
