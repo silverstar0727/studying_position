@@ -29,7 +29,7 @@
 				overflow:scroll;
 				width:300px;
 				height:450px;
-				background-color:red;
+				margin:0 auto;
 			}
 		</style>
 		<link rel="stylesheet" href="style.css" />
@@ -42,17 +42,12 @@
 			<canvas id="myChart" width="400" height="400"></canvas>
 		</div>
 		<div class="box_2" id='content'>
-			<div class='box_21'>
-				
-			</div>
-			
-			<div></div>
-			
-			<div class='box_22'>
-			
-			</div>
+			<div class='box_21'></div>
+			<div style='height:20px'></div>
+			<div class='box_22' id='timeline'></div>
 		</div>
 		<script>
+			
 			var studying = JSON.parse(localStorage.getItem('studying'));
 
 			// =========== 결과를 result1에 저장(미완입니다.)
@@ -101,6 +96,37 @@
 					X += result1[i][0] - result1[i - 1][0];
 				}
 			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			//새로운 div를 timeline(box_22)에 추가
+			var newDivHtml = "<span>추가할 내용</span>";
+
+			var div = parent.document.createElement("div");
+			div.id = "aaa";
+			div.innerHTML = newDivHtml;
+			div.style.backgroundColor='red';
+			
+			// 특정 필드에 심기
+			parent.document.getElementById("timeline").appendChild(div);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			//document.getElementById("content").innerHTML = Y;
 
