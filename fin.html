@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<style>
+			.box_1{
+				float:left;
+				width:500px;
+				height:600px;
+				margin-left:400px;
+			}
+			.box_2{
+				overflow:scroll;
+				display:inline-block;
+				float:right;
+				width:500px;
+				height:600px;
+				margin-right:400px;
+			}
+			.Header{
+				height:300px;
+			}
+		</style>
 		<link rel="stylesheet" href="style.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 	</head>
 	<body>
-		<div class="container">
+		<div class=Header>
+		</div>
+		<div class="box_1">
 			<canvas id="myChart" width="400" height="400"></canvas>
 		</div>
+		<div class="box_2"></div>
 		<script>
 			var studying = JSON.parse(localStorage.getItem('studying'));
 
@@ -39,7 +61,7 @@
 				}
 			}
 
-			document.write(result1, '<br>', 'end');
+			//document.write(result1, '<br>', 'end');
 
 			var Y = 0; // 공부한 시간
 			var X = 0; // 공부 안한 시간
@@ -58,7 +80,7 @@
 				}
 			}
 
-			document.write('<br> 공부함', Y, '<br> 공부 안함', X);
+			//document.write('<br> 공부함', Y, '<br> 공부 안함', X);
 
 			// ============ 임의적으로 그린 그래프 입니다.
 			// data
