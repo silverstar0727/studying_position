@@ -2,52 +2,93 @@
 <html>
 	<head>
 		<style>
-			.box_1{
-				float:left;
-				width:500px;
-				height:600px;
-				margin-left:400px;
+			@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+			@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@600&display=swap');
+			@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+			.container {
+				max-width: 960px;
+				margin: 30px auto;
+				padding: 20px;
 			}
-			.box_2{
-				overflow:scroll;
-				display:inline-block;
-				float:right;
-				width:500px;
-				height:600px;
-				margin-right:400px;
+			.box_1 {
+				float: left;
+				width: 500px;
+				height: 500px;
+				margin-left: 500px;
 			}
-			.Header{
-				height:300px;
+			.time {
+				float: right;
+				width: 400px;
+				height: 600px;
+				margin: auto;
 			}
-			.box_21{
-				width:300px;
-				height:50px;
-				margin:0 auto;
-				background-color:blue;
+			.box_2 {
+				overflow: scroll;
+				display: inline-block;
+				float: right;
+				width: 500px;
+				height: 600px;
+				margin-right: 400px;
 			}
-			.box_22{
-				overflow:scroll;
-				width:300px;
-				height:450px;
-				margin:0 auto;
+			.Header {
+				height: 300px;
+			}
+			.box_21 {
+				width: 300px;
+				height: 50px;
+				margin: 0 auto;
+				background-color: blue;
+			}
+			.box_22 {
+				overflow: scroll;
+				width: 300px;
+				height: 450px;
+				margin: 0 auto;
+			}
+			h1 {
+				font-size: 45px;
+				font-family: 'Maven Pro', sans-serif;
+				text-align: center;
+				margin: 20px 0 20px;
+			}
+			h5 {
+				font-family: 'Noto Serif KR', serif;
+				font-size: 20px;
+				text-align: left;
+				margin: auto;
+				line-height: 2 !important;
 			}
 		</style>
 		<link rel="stylesheet" href="style.css" />
+
+		<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
+		<script
+			type="text/javascript"
+			charset="utf-8"
+			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"
+		></script>
+		<script src="/com/js/Chart.PieceLabel.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 	</head>
 	<body>
-		<div class=Header>
+		<div class="container">
+			<h1>
+				<div>
+					RESULT
+				</div>
+			</h1>
 		</div>
 		<div class="box_1">
 			<canvas id="myChart" width="400" height="400"></canvas>
 		</div>
-		<div class="box_2" id='content'>
-			<div class='box_21'></div>
-			<div style='height:20px'></div>
-			<div class='box_22' id='timeline'></div>
+
+		<div class="box_2" id="content">
+			<div class="box_21"></div>
+			<div style="height: 20px;"></div>
+			<div class="box_22" id="timeline"></div>
 		</div>
-		<script>
-			
+		<script type="text/javascript">
 			var studying = JSON.parse(localStorage.getItem('studying'));
 
 			// =========== 결과를 result1에 저장(미완입니다.)
@@ -96,38 +137,18 @@
 					X += result1[i][0] - result1[i - 1][0];
 				}
 			}
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			//새로운 div를 timeline(box_22)에 추가
-			var newDivHtml = "<span>추가할 내용</span>";
 
-			var div = parent.document.createElement("div");
-			div.id = "aaa";
+			//새로운 div를 timeline(box_22)에 추가
+			var newDivHtml = '<span>추가할 내용</span>';
+
+			var div = parent.document.createElement('div');
+			div.id = 'aaa';
 			div.innerHTML = newDivHtml;
-			div.style.backgroundColor='red';
-			
+			div.style.backgroundColor = 'white';
+
 			// 특정 필드에 심기
-			parent.document.getElementById("timeline").appendChild(div);
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			parent.document.getElementById('timeline').appendChild(div);
+
 			//document.getElementById("content").innerHTML = Y;
 
 			//document.write('<br> 공부함', Y, '<br> 공부 안함', X);
@@ -146,18 +167,39 @@
 						{
 							label: '공부시간',
 							data: data,
-							backgroundColor:[
+							backgroundColor: [
 								'rgba(255, 10, 100, 0.2)',
-								'rgba(200, 100, 255, 0.2)'
+								'rgba(200, 100, 255, 0.2)',
 							],
-							borderColor:[
-								'rgba(255, 10, 100, 0.2)',
-								'rgba(200, 100, 255, 0.2)'
-							]
+							borderColor: ['rgba(255, 10, 100, 0.2)', 'rgba(200, 100, 255, 0.2)'],
 						},
 					],
 				},
 			});
+
+			function sec2time(timeInSeconds) {
+				var pad = function (num, size) {
+						return ('000' + num).slice(size * -1);
+					},
+					time = parseFloat(timeInSeconds).toFixed(3),
+					hours = Math.floor(time / 60 / 60),
+					minutes = Math.floor(time / 60) % 60,
+					seconds = Math.floor(time - minutes * 60),
+					milliseconds = time.slice(-3);
+
+				return pad(hours, 1) + ':' + pad(minutes, 2) + ':' + pad(seconds, 2);
+			}
 		</script>
+		<div class="time">
+			<h5>
+				<script>
+					var y = sec2time(Y);
+					var xy = sec2time(Y + X);
+					document.write('총 공부시간 : ', xy);
+					document.write('<hr>');
+					document.write('순 공부시간 : ', y);
+				</script>
+			</h5>
+		</div>
 	</body>
 </html>
