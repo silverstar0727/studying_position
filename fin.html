@@ -115,7 +115,7 @@
 
 			// =========== 결과를 result1에 저장(미완입니다.)
 			// 목표: 연속된 studying 값들이 존재할때 공부를 시작한 시각과 끝난 시각의 양 끝을 저장하기 위함
-			var result1 = new Array();
+			var result1 = [[0, 0]];
 			var i = 0;
 
 			// 5번째부터(5번째부터 한 이유는 연속된 동작이 모두 공부중이거나 공부중이지 않을때만 저장하기 위함) 마지막까지 반복
@@ -160,18 +160,23 @@
 				}
 			}
 
-			//새로운 div를 timeline(box_22)에 추가
-			var newDivHtml = '<span>추가할 내용</span>';
+			
+			var i;
+			for(i = 0; i < result1.length - 1; i ++){
+				//새로운 div를 timeline(box_22)에 추가
+				var div = parent.document.createElement('div');
+				var id_name = 'id_' + String(i);
+				div.id = id_name;
+				div.innerHTML = '<span>' + String(result1[i][0]) + ' ~ ' + String(result1[i+1][0]) +'<span>';
+				//div.innerHTML = '<span>' + String(result1[i][0]) + ' ~ ' + String(result1[i+1][0])  + '<span>';
+				div.style.backgroundColor = 'white';
 
-			var div = parent.document.createElement('div');
-			div.id = 'aaa';
-			div.innerHTML = newDivHtml;
-			div.style.backgroundColor = 'white';
+				// 특정 필드에 심기
+				parent.document.getElementById('timeline').appendChild(div);
 
-			// 특정 필드에 심기
-			parent.document.getElementById('timeline').appendChild(div);
+				//document.getElementById("content").innerHTML = Y;	
+			}
 
-			//document.getElementById("content").innerHTML = Y;
 
 			//document.write('<br> 공부함', Y, '<br> 공부 안함', X);
 
