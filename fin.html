@@ -165,9 +165,16 @@
 			for(i = 0; i < result1.length - 1; i ++){
 				//새로운 div를 timeline(box_22)에 추가
 				var div = parent.document.createElement('div');
+				
+				// id 는 id_1, id_2 이런식
 				var id_name = 'id_' + String(i);
 				div.id = id_name;
+				
+				// 내용 부분 
 				div.innerHTML = '<span>' + String(result1[i][0]) + ' ~ ' + String(result1[i+1][0]) +'<span>';
+				
+				
+				// style 부분 div.style~~ 이런식으로 넣으면 돼요
 				div.style.backgroundColor = 'white';
 
 				// 특정 필드에 심기
