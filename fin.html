@@ -168,19 +168,12 @@
 				var id_name = 'id_' + String(i);
 				div.id = id_name;
 				div.innerHTML = '<span>' + String(result1[i][0]) + ' ~ ' + String(result1[i+1][0]) +'<span>';
-				//div.innerHTML = '<span>' + String(result1[i][0]) + ' ~ ' + String(result1[i+1][0])  + '<span>';
 				div.style.backgroundColor = 'white';
 
 				// 특정 필드에 심기
 				parent.document.getElementById('timeline').appendChild(div);
-
-				//document.getElementById("content").innerHTML = Y;	
 			}
 
-
-			//document.write('<br> 공부함', Y, '<br> 공부 안함', X);
-
-			// ============ 임의적으로 그린 그래프 입니다.
 			// data
 			var data = [Y, X];
 
