@@ -35,9 +35,17 @@
 			}
 			.box_21 {
 				font-size: 25px;
-				font-family: 'Maven Pro', sans-serif;
+				font-family: 'Maven Pro','Noto Serif KR', sans-serif;
 				width: 300px;
-				height: 50px;
+				height: 60px;
+				margin: 0 auto;
+				background-color: white;
+			}
+			.box_211{
+				font-size: 15px;
+				font-family: 'Maven Pro','Noto Serif KR', sans-serif;
+				width: 300px;
+				height: 10px;
 				margin: 0 auto;
 				background-color: white;
 			}
@@ -88,27 +96,36 @@
 		<div class="container">
 			<h1>
 				<div>
-					<a>RESULT</a>					
+					<a style="color: #ffa3b1;">RE</a><a style="color: #bab86c;">SULT</a>
 					<script>
 						document.write('<hr>');
 					</script>
 					<p></p>
-					 
 				</div>
 			</h1>
 		</div>
 		<div class="box_1">
-			<canvas id="myChart" width="400" height="400"></canvas>
+			<canvas id="myChart" width="400" height="400">
+				</canvas>
 		</div>
 
 		<div class="box_2" id="content">
-			<div class="box_21">Time Table</div>
-			<div style="height: 20px;"></div>
+			<div class="box_21">Time Table
+				<p></p></div>
+			<div class="box_211">
+				흰색이 공부시간입니다.
+			</div>
+			<div style="height: 40px;"></div>
 			<div class="box_22" id="timeline"></div>
 			<p></p>
-         <button class="button" type="button" onclick="location.href='index.html', index()">
-			 <a><img src="https://s3.amazonaws.com/freestock-prod/450/freestock_562242718.jpg" width=20 height=20></a><a>Home</a>
-         </button>
+			<button class="button" type="button" onclick="location.href='index.html', index()">
+				<a
+					><img
+						src="https://s3.amazonaws.com/freestock-prod/450/freestock_562242718.jpg"
+						width="20"
+						height="20" /></a
+				><a>Home</a>
+			</button>
 		</div>
 		<script type="text/javascript">
 			var studying = JSON.parse(localStorage.getItem('studying'));
@@ -160,25 +177,40 @@
 				}
 			}
 
-			
 			var i;
-			for(i = 0; i < result1.length - 1; i ++){
+			for (i = 0; i < result1.length - 1; i++) {
 				//새로운 div를 timeline(box_22)에 추가
 				var div = parent.document.createElement('div');
-				
+
 				// id 는 id_1, id_2 이런식
 				var id_name = 'id_' + String(i);
 				div.id = id_name;
-				
-				// 내용 부분 
-				div.innerHTML = '<span>' + String(result1[i][0]) + '분  ~  ' + String(result1[i+1][0]) +'분 <span>';
-				
-				
+
+			
+
+				// 내용 부분
+				div.innerHTML =
+					'<span>' +
+					sec2time(String(result1[i][0])) +
+					'  ~  ' +
+					sec2time(String(result1[i + 1][0])) +
+					' <span>';
+
 				// style 부분 div.style~~ 이런식으로 넣으면 돼요
 				// text-align 같은 원래 css에서 '-' 얘가 있는건 다음문자에서 대문자로 textAlign 이렇게 쓰면 돼요
-				div.style.backgroundColor = 'white';
-				div.style.textAlign  = 'center';
+
+				if (result1[i][1] == 0){
+					div.style.backgroundColor = 'lightgrey'
+					div.style.color = 'white'
+				}
+				else {
+					div.style.backgroundColor = 'white'
+					div.style.color = 'black'
+				}
 				
+				div.style.textAlign = 'center';
+				
+
 				// 특정 필드에 심기
 				parent.document.getElementById('timeline').appendChild(div);
 			}
@@ -234,7 +266,9 @@
 					var fin = Math.floor(per * 100);
 					document.write('집중도 | ', fin, '%');
 				</script>
+				
 			</h5>
+			
 		</div>
 		<p></p>
 	</body>
